@@ -1,0 +1,54 @@
+users
+    id - int
+    name - string
+
+questionnaires
+    id - int
+    title - string
+
+variables
+    criteria_id - int
+    variable_id - int
+    variable_type - string
+
+criterias
+    id - int
+    criteria - string
+
+questionables
+    question_id - int
+    questionable_id - int
+    questionable_type - string
+
+questions
+    id - int
+    title - string
+
+answerables
+    answer_id - int
+    answerable_id - int
+    answerable_type - string
+
+answers
+    id - int
+    title - string
+
+surveys
+    id - int
+    user_id - int
+    questionnaire_id - int
+    company - string
+    address - string
+
+survey_responses
+    id - int
+    survey_id
+    question_id
+    answer_id
+
+sets
+    id
+
+rules
+    id
+

@@ -1,0 +1,19 @@
+/**
+ *
+ * You can write your CSS code here, DO NOT touch the default JavaScript file
+ * because it will make it harder for you to update.
+ *
+ */
+
+/*# sourceMappingURL=custom.css.map */
+.responsivechart {
+    width: 100%;
+    min-height: 450px;
+    margin:0 !important;
+}
+
+#gauge {
+    display: inline-block;
+    height: 400px;
+}
+
