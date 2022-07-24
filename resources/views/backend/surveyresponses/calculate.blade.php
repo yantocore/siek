@@ -3,12 +3,12 @@
 @section('content')
 <div class="section-header">
     <div class="section-header-back">
-        <a href="{{ route('surveyresponses.show',$questionnaire_id) }}" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
+        <a href="{{ route('surveyresponses.index') }}" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
     </div>
     <h1>Hitung Kuesioner</h1>
     <div class="section-header-breadcrumb">
       <div class="breadcrumb-item active"><a href="{{ route('dashboard') }}">Beranda</a></div>
-      <div class="breadcrumb-item active"><a href="{{ route('surveyresponses.show',$questionnaire_id) }}">Kelola Hasil Kuesioner</a></div>
+      <div class="breadcrumb-item active"><a href="{{ route('surveyresponses.index') }}">Kelola Hasil Kuesioner</a></div>
       <div class="breadcrumb-item">Hitung Kuesioner</div>
     </div>
 </div>
@@ -79,7 +79,7 @@
                                         {{ $sum_skor}}
                                     </td>
                                     <td class="align-middle">
-                                        {{ $softskill_index = ($sum_skor/($max_answer_value*$question->questionnaire->surveys->count()))*100 }} %
+                                        {{ number_format($softskill_index = ($sum_skor/($max_answer_value*$question->questionnaire->surveys->count()))*100, 2, '.', '') }} %
                                     </td>
                                 </tr>
                             @php
@@ -165,7 +165,7 @@
                                         {{ $sum_skor}}
                                     </td>
                                     <td class="align-middle">
-                                        {{ $hardskill_index = ($sum_skor/($max_answer_value*$question->questionnaire->surveys->count()))*100 }} %
+                                        {{ number_format($hardskill_index = ($sum_skor/($max_answer_value*$question->questionnaire->surveys->count()))*100, 2, '.', '') }} %
                                     </td>
                                 </tr>
                                 @php

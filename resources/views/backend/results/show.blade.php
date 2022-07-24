@@ -6,9 +6,9 @@
         <a href="{{ route('results.index') }}" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
     </div>
     <h1>Evaluasi Fuzzy Sugeno Orde Nol</h1>
-    <div class="section-header-button">
+    {{-- <div class="section-header-button">
         <a href="{{ url('results/'.$result->id.'/export-pdf') }}" class="btn btn-icon icon-left btn-primary fas fa-print" title="" data-toggle="tooltip" data-placement="top" title="" data-original-title="Cetak PDF"> Cetak PDF</a>
-    </div>
+    </div> --}}
     <div class="section-header-breadcrumb">
       <div class="breadcrumb-item active"><a href="{{ route('results.index') }}">Beranda</a></div>
       <div class="breadcrumb-item">Evaluasi Fuzzy Sugeno Orde Nol</div>
@@ -84,58 +84,60 @@
                             <td>{{ $key+1 }}</td>
                             <td>{{ $variable->questionnaire->period }}</td>
                             {{-- //softskill_kurang --}}
-                                @if ($variable->softskill<=$set_kurang->right_up)
+                                @if ($variable->softskill <= $set_kurang->right_up)
                                     <td>{{ $softskill_kurang = number_format(1, 2, '.', '') }}</td>
-                                @elseif($set_kurang->right_up<=$variable->softskill && $variable->softskill<=$set_kurang->right_down)
+                                @elseif($set_kurang->right_up < $variable->softskill && $variable->softskill < $set_kurang->right_down)
                                     <td>{{ $softskill_kurang = number_format(($set_kurang->right_down - $variable->softskill)/($set_kurang->right_down - $set_kurang->right_up), 2, '.', '') }}</td>
-                                @elseif($variable->softskill>=$set_kurang->right_down)
+                                @elseif($variable->softskill >= $set_kurang->right_down)
                                     <td>{{ $softskill_kurang = number_format(0, 2, '.', '') }}</td>
                                 @endif
                             {{-- //softskill_cukup --}}
-                                @if ($variable->softskill<=$set_cukup->left_up)
+                                @if ($variable->softskill <= $set_cukup->left_down)
                                     <td>{{ $softskill_cukup = number_format(0, 2, '.', '') }}</td>
-                                @elseif($set_cukup->left_down<=$variable->softskill && $variable->softskill<=$set_cukup->left_up)
+                                @elseif($set_cukup->left_down < $variable->softskill && $variable->softskill<=$set_cukup->left_up)
                                     <td>{{ $softskill_cukup = number_format(($variable->softskill - $set_cukup->left_down)/($set_cukup->left_up - $set_cukup->left_down), 2, '.', '') }}</td>
-                                @elseif($set_cukup->left_up<=$variable->softskill && $variable->softskill<=$set_cukup->right_up)
+                                @elseif($set_cukup->left_up < $variable->softskill && $variable->softskill <= $set_cukup->right_up)
                                     <td>{{ $softskill_cukup = number_format(1, 2, '.', '') }}</td>
-                                @elseif($variable->softskill>=$set_cukup->right_up)
+                                @elseif($set_cukup->right_up < $variable->softskill && $variable->softskill < $set_cukup->right_down)
+                                    <td>{{ $softskill_cukup = number_format(($set_cukup->right_down - $variable->softskill)/($set_cukup->right_down - $set_cukup->right_up), 2, '.', '') }}</td>
+                                @elseif($variable->softskill >= $set_cukup->right_down)
                                     <td>{{ $softskill_cukup = number_format(0, 2, '.', '') }}</td>
                                 @endif
                             {{-- //softskill_baik --}}
-                                @if ($variable->softskill<=$set_baik->left_down)
+                                @if ($variable->softskill <= $set_baik->left_down)
                                     <td>{{ $softskill_baik = number_format(0, 2, '.', '') }}</td>
-                                @elseif($set_baik->left_down<=$variable->softskill && $variable->softskill<=$set_baik->left_up)
+                                @elseif($set_baik->left_down < $variable->softskill && $variable->softskill <= $set_baik->left_up)
                                     <td>{{ $softskill_baik = number_format(($variable->softskill - $set_baik->left_down)/($set_baik->left_up - $set_baik->left_down), 2, '.', '') }}</td>
-                                @elseif($variable->softskill>=$set_baik->left_up)
+                                @elseif($variable->softskill >= $set_baik->left_up)
                                     <td>{{ $softskill_baik = number_format(1, 2, '.', '') }}</td>
                                 @endif
 
                             {{-- //hardskill_kurang --}}
-                                @if ($variable->hardskill<=$set_kurang->right_up)
+                                @if ($variable->hardskill <= $set_kurang->right_up)
                                     <td>{{ $hardskill_kurang = number_format(1, 2, '.', '') }}</td>
-                                @elseif($set_kurang->right_up<=$variable->hardskill && $variable->hardskill<=$set_kurang->right_down)
+                                @elseif($set_kurang->right_up < $variable->hardskill && $variable->hardskill < $set_kurang->right_down)
                                     <td>{{ $hardskill_kurang = number_format(($set_kurang->right_down - $variable->hardskill)/($set_kurang->right_down - $set_kurang->right_up), 2, '.', '') }}</td>
-                                @elseif($variable->hardskill>=$set_kurang->right_down)
+                                @elseif($variable->hardskill >= $set_kurang->right_down)
                                     <td>{{ $hardskill_kurang = number_format(0, 2, '.', '') }}</td>
                                 @endif
-
                             {{-- //hardskill_cukup --}}
-                                @if ($variable->hardskill<=$set_cukup->left_up)
+                                @if ($variable->hardskill <= $set_cukup->left_down)
                                     <td>{{ $hardskill_cukup = number_format(0, 2, '.', '') }}</td>
-                                @elseif($set_cukup->left_down<=$variable->hardskill && $variable->hardskill<=$set_cukup->left_up)
+                                @elseif($set_cukup->left_down < $variable->hardskill && $variable->hardskill<=$set_cukup->left_up)
                                     <td>{{ $hardskill_cukup = number_format(($variable->hardskill - $set_cukup->left_down)/($set_cukup->left_up - $set_cukup->left_down), 2, '.', '') }}</td>
-                                @elseif($set_cukup->left_up<=$variable->hardskill && $variable->hardskill<=$set_cukup->right_up)
+                                @elseif($set_cukup->left_up < $variable->hardskill && $variable->hardskill <= $set_cukup->right_up)
                                     <td>{{ $hardskill_cukup = number_format(1, 2, '.', '') }}</td>
-                                @elseif($variable->hardskill>=$set_cukup->right_up)
+                                @elseif($set_cukup->right_up < $variable->hardskill && $variable->hardskill < $set_cukup->right_down)
+                                    <td>{{ $hardskill_cukup = number_format(($set_cukup->right_down - $variable->hardskill)/($set_cukup->right_down - $set_cukup->right_up), 2, '.', '') }}</td>
+                                @elseif($variable->hardskill >= $set_cukup->right_down)
                                     <td>{{ $hardskill_cukup = number_format(0, 2, '.', '') }}</td>
                                 @endif
-
                             {{-- //hardskill_baik --}}
-                                @if ($variable->hardskill<=$set_baik->left_down)
+                                @if ($variable->hardskill <= $set_baik->left_down)
                                     <td>{{ $hardskill_baik = number_format(0, 2, '.', '') }}</td>
-                                @elseif($set_baik->left_down<=$variable->hardskill && $variable->hardskill<=$set_baik->left_up)
+                                @elseif($set_baik->left_down < $variable->hardskill && $variable->hardskill <= $set_baik->left_up)
                                     <td>{{ $hardskill_baik = number_format(($variable->hardskill - $set_baik->left_down)/($set_baik->left_up - $set_baik->left_down), 2, '.', '') }}</td>
-                                @elseif($variable->hardskill>=$set_baik->left_up)
+                                @elseif($variable->hardskill >= $set_baik->left_up)
                                     <td>{{ $hardskill_baik = number_format(1, 2, '.', '') }}</td>
                                 @endif
                         </tr>
@@ -291,7 +293,7 @@
                             @endif
                             @if (round($sum_alpha_z/$sum_alpha,2) <= 60)
                             <td>Kurang</td>
-                            @elseif (round($sum_alpha_z/$sum_alpha,2) >= 61 && round($sum_alpha_z/$sum_alpha,2) < 80)
+                            @elseif (round($sum_alpha_z/$sum_alpha,2) >= 61 && round($sum_alpha_z/$sum_alpha,2) <= 80)
                             <td>Cukup</td>
                             @elseif (round($sum_alpha_z/$sum_alpha,2) >= 81)
                             <td>Baik</td>

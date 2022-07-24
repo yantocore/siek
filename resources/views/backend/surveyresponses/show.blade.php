@@ -19,14 +19,14 @@
           <div class="card card-primary shadow">
             <div class="card-header">
                 <h4>Data Hasil Tahun {{ $period }}</h4>
-                @can('calculate surveyresponses')
+                {{-- @can('calculate surveyresponses')
                 <fieldset>
                     <form action="{{ url('surveyresponses/'.$questionnaire.'/calculate') }}" method="POST">
                         @csrf
                         <button type="submit" class="btn btn-icon icon-left btn-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Hitung Kuesioner"><i class="fas fa-calculator"></i> Hitung</button>
                     </form>
                 </fieldset>
-                @endcan
+                @endcan --}}
             </div>
             <div class="card-body">
                 <div class="table-responsive">

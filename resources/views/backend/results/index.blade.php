@@ -35,8 +35,6 @@
                         <tr class="text-center">
                             <td>{{ $key+1 }}</td>
                             <td>{{ $result->variable->questionnaire->period }}</td>
-                            {{-- <td>{{ $result->sum_alpha }}</td>
-                            <td>{{ $result->sum_alpha_z }}</td> --}}
                             <td>{{ $result->performance }}</td>
                             @if ($result->performance <= 60)
                             <td>Kurang</td>
@@ -49,6 +47,7 @@
                                 @can('show results')
                                 <a href="{{ route('results.show',$result->id) }}" class="btn btn-sm btn-primary far fa-eye" data-toggle="tooltip" data-placement="top" title="" data-original-title="Show"></a>
                                 @endcan
+                                <a href="{{ url('results/'.$result->id.'/export-pdf') }}" class="btn btn-sm btn-primary far fa-print" title="" data-toggle="tooltip" data-placement="top" title="" data-original-title="Cetak PDF"></a>
                             </td>
                         </tr>
                         @endforeach

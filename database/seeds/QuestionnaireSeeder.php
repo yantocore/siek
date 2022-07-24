@@ -1,8 +1,8 @@
 <?php
 
 use Carbon\Carbon;
-use App\Questionnaire;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class QuestionnaireSeeder extends Seeder
 {
@@ -13,12 +13,21 @@ class QuestionnaireSeeder extends Seeder
      */
     public function run()
     {
-        Questionnaire::create([
-            'user_id' => '1',
+
+        $questionnaires = [
+            ['user_id' => '1',
             'title' => 'Evaluasi Kinerja Alumni Akfar Yarsi Pontianak',
-            'purpose' => 'Kuesioner ini bertujuan untuk mengumpulkan data penilaian pengguna alumni terhadap kinerja alumni AKFAR YARSI Pontianak',
+            'purpose' => 'Kuesioner ini bertujuan untuk mengumpulkan tanggapan pengguna alumni terhadap kinerja alumni AKFAR YARSI Pontianak',
             'period' => '2017',
-            'due_date' => Carbon::tomorrow()->format('Y-m-d')
-        ]);
+            'due_date' => Carbon::tomorrow()->format('Y-m-d')],
+            ['user_id' => '2',
+            'title' => 'Evaluasi Kinerja Alumni Akfar Yarsi Pontianak',
+            'purpose' => 'Kuesioner ini bertujuan untuk mengumpulkan tanggapan pengguna alumni terhadap kinerja alumni AKFAR YARSI Pontianak',
+            'period' => '2018',
+            'due_date' => Carbon::tomorrow()->format('Y-m-d')],
+        ];
+
+        DB::table('questionnaires')->insert($questionnaires);
+
     }
 }

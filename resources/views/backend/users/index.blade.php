@@ -91,11 +91,15 @@
                                             <a href="{{ route('users.edit',$admin->id) }}" class="btn btn-sm btn-primary far fa-edit" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"></a>
                                             @endcan
                                             @can('destroy users')
-                                            <form style="display:inline" action="{{ route('users.destroy',$admin->id) }}" id="delete" method="POST">
-                                                @method('DELETE')
-                                                @csrf
-                                                <button type="submit" class="btn btn-sm btn-danger far fa-trash" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"></button>
-                                            </form>
+                                                @if($admin->email == Auth::user()->email)
+
+                                                @else
+                                                <form style="display:inline" action="{{ route('users.destroy',$admin->id) }}" id="delete" method="POST">
+                                                    @method('DELETE')
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-sm btn-danger far fa-trash" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"></button>
+                                                </form>
+                                                @endif
                                             @endcan
                                         </td>
                                     </tr>
@@ -158,11 +162,11 @@
                                             <a href="{{ route('users.edit',$user->id)}}" class="btn btn-sm btn-primary far fa-edit" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"></a>
                                             @endcan
                                             @can('destroy users')
-                                            <form style="display:inline" action="{{ route('users.destroy',$user->id)}}" id="delete" method="POST">
-                                                @method('DELETE')
-                                                @csrf
-                                                <button type="submit" class="btn btn-sm btn-danger far fa-trash" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"></button>
-                                            </form>
+                                                <form style="display:inline" action="{{ route('users.destroy',$user->id)}}" id="delete" method="POST">
+                                                    @method('DELETE')
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-sm btn-danger far fa-trash" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"></button>
+                                                </form>
                                             @endcan
                                         </td>
                                     </tr>

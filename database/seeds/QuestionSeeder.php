@@ -20,6 +20,13 @@ class QuestionSeeder extends Seeder
             ['questionnaire_id' => '1', 'criteria_id' => '1', 'name' => 'Kemampuan berkomunikasi'],
             ['questionnaire_id' => '1', 'criteria_id' => '1', 'name' => 'Kerjasama tim'],
             ['questionnaire_id' => '1', 'criteria_id' => '1', 'name' => 'Pengembangan diri'],
+            ['questionnaire_id' => '2', 'criteria_id' => '1', 'name' => 'Etika'],
+            ['questionnaire_id' => '2', 'criteria_id' => '2', 'name' => 'Keahlian pada bidang ilmu (kompetensi utama)'],
+            ['questionnaire_id' => '2', 'criteria_id' => '2', 'name' => 'Kemampuan berbahasa asing'],
+            ['questionnaire_id' => '2', 'criteria_id' => '2', 'name' => 'Penggunaan teknologi informasi'],
+            ['questionnaire_id' => '2', 'criteria_id' => '1', 'name' => 'Kemampuan berkomunikasi'],
+            ['questionnaire_id' => '2', 'criteria_id' => '1', 'name' => 'Kerjasama tim'],
+            ['questionnaire_id' => '2', 'criteria_id' => '1', 'name' => 'Pengembangan diri'],
         ];
 
         DB::table('questions')->insert($questions);

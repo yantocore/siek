@@ -136,58 +136,60 @@ class VariableController extends Controller
             //Fuzzifikasi
             foreach ($variables as $key=> $variable){
                 //softskill_kurang
-                    if ($variable->softskill<=$set_kurang->right_up){
+                    if ($variable->softskill <= $set_kurang->right_up){
                         $softskill_kurang = number_format(1, 2, '.', '');
-                    }elseif($set_kurang->right_up<=$variable->softskill && $variable->softskill<=$set_kurang->right_down){
+                    }elseif($set_kurang->right_up < $variable->softskill && $variable->softskill < $set_kurang->right_down){
                         $softskill_kurang = number_format(($set_kurang->right_down - $variable->softskill)/($set_kurang->right_down - $set_kurang->right_up), 2, '.', '');
-                    }elseif($variable->softskill>=$set_kurang->right_down){
+                    }elseif($variable->softskill >= $set_kurang->right_down){
                         $softskill_kurang = number_format(0, 2, '.', '');
                     }
                 //softskill_cukup
-                    if ($variable->softskill<=$set_cukup->left_up){
+                    if ($variable->softskill <= $set_cukup->left_down){
                         $softskill_cukup = number_format(0, 2, '.', '');
-                    }elseif($set_cukup->left_down<=$variable->softskill && $variable->softskill<=$set_cukup->left_up){
+                    }elseif($set_cukup->left_down < $variable->softskill && $variable->softskill <= $set_cukup->left_up){
                         $softskill_cukup = number_format(($variable->softskill - $set_cukup->left_down)/($set_cukup->left_up - $set_cukup->left_down), 2, '.', '');
-                    }elseif($set_cukup->left_up<=$variable->softskill && $variable->softskill<=$set_cukup->right_up){
+                    }elseif($set_cukup->left_up < $variable->softskill && $variable->softskill <= $set_cukup->right_up){
                         $softskill_cukup = number_format(1, 2, '.', '');
-                    }elseif($variable->softskill>=$set_cukup->right_up){
+                    }elseif($set_cukup->right_up < $variable->softskill && $variable->softskill < $set_cukup->right_down){
+                        $softskill_cukup = number_format(($set_cukup->right_down - $variable->softskill)/($set_cukup->right_down - $set_cukup->right_up), 2, '.', '');
+                    }elseif($variable->softskill >= $set_cukup->right_down){
                         $softskill_cukup = number_format(0, 2, '.', '');
                     }
                 //softskill_baik
-                    if ($variable->softskill<=$set_baik->left_down){
+                    if ($variable->softskill <= $set_baik->left_down){
                         $softskill_baik = number_format(0, 2, '.', '');
-                    }elseif($set_baik->left_down<=$variable->softskill && $variable->softskill<=$set_baik->left_up){
+                    }elseif($set_baik->left_down < $variable->softskill && $variable->softskill <= $set_baik->left_up){
                         $softskill_baik = number_format(($variable->softskill - $set_baik->left_down)/($set_baik->left_up - $set_baik->left_down), 2, '.', '');
-                    }elseif($variable->softskill>=$set_baik->left_up){
+                    }elseif($variable->softskill >= $set_baik->left_up){
                         $softskill_baik = number_format(1, 2, '.', '');
                     }
 
                 //hardskill_kurang
-                    if ($variable->hardskill<=$set_kurang->right_up){
+                    if ($variable->hardskill <= $set_kurang->right_up){
                         $hardskill_kurang = number_format(1, 2, '.', '');
-                    }elseif($set_kurang->right_up<=$variable->hardskill && $variable->hardskill<=$set_kurang->right_down){
+                    }elseif($set_kurang->right_up < $variable->hardskill && $variable->hardskill < $set_kurang->right_down){
                         $hardskill_kurang = number_format(($set_kurang->right_down - $variable->hardskill)/($set_kurang->right_down - $set_kurang->right_up), 2, '.', '');
-                    }elseif($variable->hardskill>=$set_kurang->right_down){
+                    }elseif($variable->hardskill >= $set_kurang->right_down){
                         $hardskill_kurang = number_format(0, 2, '.', '');
                     }
-
                 //hardskill_cukup
-                    if ($variable->hardskill<=$set_cukup->left_up){
+                    if ($variable->hardskill <= $set_cukup->left_down){
                         $hardskill_cukup = number_format(0, 2, '.', '');
-                    }elseif($set_cukup->left_down<=$variable->hardskill && $variable->hardskill<=$set_cukup->left_up){
+                    }elseif($set_cukup->left_down < $variable->hardskill && $variable->hardskill <= $set_cukup->left_up){
                         $hardskill_cukup = number_format(($variable->hardskill - $set_cukup->left_down)/($set_cukup->left_up - $set_cukup->left_down), 2, '.', '');
-                    }elseif($set_cukup->left_up<=$variable->hardskill && $variable->hardskill<=$set_cukup->right_up){
+                    }elseif($set_cukup->left_up < $variable->hardskill && $variable->hardskill <= $set_cukup->right_up){
                         $hardskill_cukup = number_format(1, 2, '.', '');
-                    }elseif($variable->hardskill>=$set_cukup->right_up){
+                    }elseif($set_cukup->right_up < $variable->hardskill && $variable->hardskill < $set_cukup->right_down){
+                        $hardskill_cukup = number_format(($set_cukup->right_down - $variable->hardskill)/($set_cukup->right_down - $set_cukup->right_up), 2, '.', '');
+                    }elseif($variable->hardskill >= $set_cukup->right_down){
                         $hardskill_cukup = number_format(0, 2, '.', '');
                     }
-
                 //hardskill_baik
-                    if ($variable->hardskill<=$set_baik->left_down){
+                    if ($variable->hardskill <= $set_baik->left_down){
                         $hardskill_baik = number_format(0, 2, '.', '');
-                    }elseif($set_baik->left_down<=$variable->hardskill && $variable->hardskill<=$set_baik->left_up){
+                    }elseif($set_baik->left_down < $variable->hardskill && $variable->hardskill <= $set_baik->left_up){
                         $hardskill_baik = number_format(($variable->hardskill - $set_baik->left_down)/($set_baik->left_up - $set_baik->left_down), 2, '.', '');
-                    }elseif($variable->hardskill>=$set_baik->left_up){
+                    }elseif($variable->hardskill >= $set_baik->left_up){
                         $hardskill_baik = number_format(1, 2, '.', '');
                     }
             }

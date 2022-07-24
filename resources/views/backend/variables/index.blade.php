@@ -37,6 +37,11 @@
                             <td>{{ $variable->hardskill }}</td>
                             <td>
                                 <a href="{{ route('variables.show',$variable->id) }}" class="btn btn-sm btn-primary far fa-eye" data-toggle="tooltip" data-placement="top" title="" data-original-title="Show"></a>
+                                <form style="display:inline" action="{{ url('variables/'.$variable->questionnaire->id.'/evaluate') }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="btn btn-sm btn-primary far fa-calculator" data-toggle="tooltip" data-placement="top" title="" data-original-title="Hitung Fuzzy Sugeno"></button>
+                                </form>
+                                <a href="{{ url('variables/'.$variable->questionnaire->id.'/export-pdf') }}" class="btn btn-sm btn-primary fas fa-print" title="" data-toggle="tooltip" data-placement="top" title="" data-original-title="Cetak PDF"></a>
                             </td>
                         </tr>
                         @endforeach

@@ -86,20 +86,4 @@ class DashboardController extends Controller
         return view('backend.dashboard.index', compact(['roles', 'greetings', 'date', 'admins', 'users', 'total_alumni', 'questionnaires', 'questions', 'criterias', 'sets', 'rules', 'surveys', 'performance', 'variables', 'results', 'categories', 'softskill', 'hardskill']))->with('databars',json_encode($bar))->with('dataresultbars',json_encode($resultbar));
     }
 
-    // public function showDataGauge(Request $request) {
-    //     $questionnaire_id = $request->input('questionnaire_id');
-    //     if(!empty($questionnaire_id))
-    //     {
-
-    //         $variables = Variable::where('questionnaire_id', $questionnaire_id)->get();
-
-    //         $gauge[] = ['Softskill','Hardskill'];
-    //         foreach ($variables as $key => $value) {
-    //             $gauge[++$key] = [$value->softskill, $value->hardskill];
-    //         }
-    //         echo json_encode($gauge);
-
-    //     }
-    // }
-
 }

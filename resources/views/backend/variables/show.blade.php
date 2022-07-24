@@ -6,9 +6,9 @@
         <a href="{{ route('variables.index') }}" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
     </div>
     <h1>Kuesioner Periode {{ $period }}</h1>
-    <div class="section-header-button">
-        <a href="{{ url('variables/'.$variable->id.'/export-pdf') }}" class="btn btn-icon icon-left btn-primary fas fa-print" title="" data-toggle="tooltip" data-placement="top" title="" data-original-title="Cetak PDF"> Cetak PDF</a>
-    </div>
+    {{-- <div class="section-header-button">
+        <a href="{{ url('variables/'.$variable->questionnaire->id.'/export-pdf') }}" class="btn btn-icon icon-left btn-primary fas fa-print" title="" data-toggle="tooltip" data-placement="top" title="" data-original-title="Cetak PDF"> Cetak PDF</a>
+    </div> --}}
     <div class="section-header-breadcrumb">
       <div class="breadcrumb-item active"><a href="{{ route('dashboard') }}">Beranda</a></div>
       <div class="breadcrumb-item active"><a href="{{ route('variables.index') }}">Kelola Variabel</a></div>
@@ -22,12 +22,12 @@
             <div class="card card-primary shadow">
                 <div class="card-header">
                 <h4>Perhitungan Kuesioner Periode {{ $period }}</h4>
-                <fieldset>
+                {{-- <fieldset>
                     <form action="{{ url('variables/'.$variable->questionnaire->id.'/evaluate') }}" method="POST">
                         @csrf
                         <button type="submit" class="btn btn-icon icon-left btn-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Hitung Fuzzy Sugeno"><i class="fas fa-calculator"></i> Hitung Fuzzy Sugeno</button>
                     </form>
-                </fieldset>
+                </fieldset> --}}
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -87,7 +87,7 @@
                                         {{ $sum_skor}}
                                     </td>
                                     <td class="align-middle">
-                                        {{ $softskill_index = ($sum_skor/($max_answer_value*$question->questionnaire->surveys->count()))*100 }} %
+                                        {{ number_format($softskill_index = ($sum_skor/($max_answer_value*$question->questionnaire->surveys->count()))*100, 2, '.', '') }} %
                                     </td>
                                 </tr>
                             @php
@@ -173,7 +173,7 @@
                                         {{ $sum_skor}}
                                     </td>
                                     <td class="align-middle">
-                                        {{ $hardskill_index = ($sum_skor/($max_answer_value*$question->questionnaire->surveys->count()))*100 }} %
+                                        {{ number_format($hardskill_index = ($sum_skor/($max_answer_value*$question->questionnaire->surveys->count()))*100, 2, '.', '') }} %
                                     </td>
                                 </tr>
                                 @php

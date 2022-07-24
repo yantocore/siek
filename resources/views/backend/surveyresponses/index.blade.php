@@ -37,6 +37,12 @@
                                 @can('show surveyresponses')
                                 <a href="{{ route('surveyresponses.show',$questionnaire->id) }}" class="btn btn-sm btn-primary far fa-eye" data-toggle="tooltip" data-placement="top" title="" data-original-title="Show"></a>
                                 @endcan
+                                @can('calculate surveyresponses')
+                                    <form style="display:inline" action="{{ url('surveyresponses/'.$questionnaire->id.'/calculate') }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="btn btn-sm btn-primary far fa-calculator" data-toggle="tooltip" data-placement="top" title="" data-original-title="Hitung Kuesioner"></button>
+                                    </form>
+                                @endcan
                                 {{-- <form style="display:inline" action="#" id="delete" method="POST">
                                     @method('DELETE')
                                     @csrf
