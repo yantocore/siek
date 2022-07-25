@@ -1,4 +1,64 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
+## How to Use
+
+Graduate Performance Evaluation Information System using Fuzzy Sugeno Method
+
+Setup on 5 steps :
+1. clone project
+```sh
+git clone https://github.com/yantocore/sieka
+```
+2. install composer
+```sh
+composer install 
+```
+or
+```sh
+composer update
+```
+3. setup env
+```sh
+APP_NAME=Laravel
+APP_ENV=local
+APP_KEY= { Generate Key with command : php artisan key:generate }
+APP_DEBUG=true
+APP_URL=http://localhost
+
+LOG_CHANNEL=stack
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=laravel
+DB_USERNAME=root
+DB_PASSWORD=root
+```
+
+4. Import database with running migration and seeder
+```sh
+php artisan migrate:refresh --seed
+```
+
+5. Serve and Running on browser
+```sh
+php artisan serve
+```
+Login as Admin :
+```sh
+admin@sieka.id
+adminsieka
+
+pimpinan@sieka.id
+pimpinansieka
+
+user@sieka.id
+usersieka
+```
+
+Enjoy, thank you!
+
+## Technology
+
+<p align="center"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></p>
 
 <p align="center">
 <a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
